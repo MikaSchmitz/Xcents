@@ -1,0 +1,15 @@
+E:\Coding\Projects\Xcents\Xcents\Xcents\bin\Debug\netstandard2.0\Xcents.deps.json
+E:\Coding\Projects\Xcents\Xcents\Xcents\bin\Debug\netstandard2.0\Xcents.dll
+E:\Coding\Projects\Xcents\Xcents\Xcents\bin\Debug\netstandard2.0\Xcents.pdb
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.csproj.AssemblyReference.cache
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.GeneratedMSBuildEditorConfig.editorconfig
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\App.xaml.g.cs
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.AssemblyInfoInputs.cache
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.AssemblyInfo.cs
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.csproj.CoreCompileInputs.cache
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\XamlC.stamp
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.dll
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\refint\Xcents.dll
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\Xcents.pdb
+E:\Coding\Projects\Xcents\Xcents\Xcents\obj\Debug\netstandard2.0\ref\Xcents.dll

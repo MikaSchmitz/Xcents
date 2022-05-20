@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xcents.App">
+    <Application.Resources>
+        <!-- Colors -->
+        <Color x:Key="AppBackgroundColor">#000000</Color>
+        <Color x:Key="PanelBackgroundColor">#171717</Color>
+        
+        <!-- classes -->
+        <Style TargetType="Label"
+               Class="GridNameExpense">
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="FontSize" Value="Body"/>
+            <Setter Property="HorizontalOptions" Value="Start"/>
+        </Style>
+
+        <Style TargetType="Label"
+               Class="GridDateExpense">
+            <Setter Property="FontSize" Value="Body"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+        </Style>
+
+        <Style TargetType="Label"
+               Class="GridCostExpense">
+            <Setter Property="FontSize" Value="Body"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+        </Style>
+
+
+    </Application.Resources>
+</Application>
