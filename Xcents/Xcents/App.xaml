@@ -28,6 +28,12 @@
             <Setter Property="HorizontalOptions" Value="End"/>
         </Style>
 
+        <Style TargetType="Frame"
+               x:Key="DetailsFullFrame">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="BackgroundColor" Value="{x:StaticResource PanelBackgroundColor}"/>
+        </Style>
+
 
     </Application.Resources>
 </Application>

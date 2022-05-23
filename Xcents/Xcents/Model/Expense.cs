@@ -19,11 +19,7 @@ namespace Xcents.Model
         public string TimePeriodValue { get; set; }
         [NotNull]
         public int TimePeriodRepeatMultiplier { get; set; }
-
-        public void SaveChanges()
-        {
-
-        }
+        public byte IsEnabled { get; set; }
 
         //get the next due date
         public DateTime DueDate()
@@ -36,6 +32,19 @@ namespace Xcents.Model
         public int DueDaysRemaining()
         {
             return DueDate().Subtract(DateTime.Now).Days;
+        }
+
+        //the amount of times the cost has already been paid
+        public int TimesPaid()
+        {
+            TimeCalculator timeCalculator = new TimeCalculator(StartDateTime, TimePeriodValue, TimePeriodRepeatMultiplier);
+            return timeCalculator.GetPassedLaps();
+        }
+
+        //total amount paid since the expense first occured
+        public double TotalPayed()
+        {
+            return TimesPaid() * Cost;
         }
     }
 }

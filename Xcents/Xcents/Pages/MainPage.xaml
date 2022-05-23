@@ -3,24 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundColor="{x:StaticResource AppBackgroundColor}"
              x:Class="Xcents.MainPage">
-
-    <StackLayout>
-        <!-- header bar -->
-        <Grid x:Name="HeaderGrid" VerticalOptions="Start" HorizontalOptions="End">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
-            <!-- footer contect goes here -->
-            <Button BackgroundColor="Transparent"
+    <!-- settings button in top bar -->
+    <NavigationPage.TitleView BackgroundColor="{x:StaticResource PanelBackgroundColor}">
+        <Button BackgroundColor="Transparent"
+                    x:Name="SettingsButton"
+                    Clicked="SettingsButton_Clicked"
                     Text="settings"
                     FontSize="20"
                     FontAttributes="Bold"
                     CornerRadius="100"
-                    VerticalOptions="Center"
+                    HorizontalOptions="End"
                     TextColor="{x:StaticResource ThemeColor}"/>
-        </Grid>
-        <!-- end header -->
-        
+    </NavigationPage.TitleView>
+
+    <StackLayout>
         <!-- scroll page -->
         <ScrollView BackgroundColor="{x:StaticResource PanelBackgroundColor}">
             <Frame Padding="24" BackgroundColor="Transparent">
@@ -45,7 +41,9 @@
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
             <!-- footer contect goes here -->
-            <Button BackgroundColor="{x:StaticResource ThemeColor}"
+            <Button x:Name="AddExpenseButton"
+                    Clicked="AddExpenseButton_Clicked"
+                    BackgroundColor="{x:StaticResource ThemeColor}"
                     Text="+"
                     FontSize="50"
                     CornerRadius="100"

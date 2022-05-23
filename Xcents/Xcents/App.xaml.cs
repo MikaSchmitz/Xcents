@@ -12,8 +12,8 @@ namespace Xcents
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
+            SetNavbarColor();
         }
 
         //connect to local db
@@ -21,7 +21,8 @@ namespace Xcents
         {
             InitializeComponent();
             DatabaseLocation = databaseLocation;
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
+            SetNavbarColor();
         }
 
         protected override void OnStart()
@@ -34,6 +35,16 @@ namespace Xcents
 
         protected override void OnResume()
         {
+        }
+
+        //set color of navbar
+        private void SetNavbarColor(Color? color = null)
+        {
+            color = color.HasValue ? color.Value : (Color)App.Current.Resources["AppBackgroundColor"];
+            //set navbar color
+            var navigationPage = Application.Current.MainPage as NavigationPage;
+            navigationPage.BarBackgroundColor = (Color)color;
+            navigationPage.BarTextColor = (Color)App.Current.Resources["ThemeColor"];
         }
     }
 }

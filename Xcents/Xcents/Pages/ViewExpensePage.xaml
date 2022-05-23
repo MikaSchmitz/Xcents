@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Xcents.Pages.ViewExpensePage"
+             BackgroundColor="{x:StaticResource AppBackgroundColor}">
+    <!-- edit button in top bar -->
+    <NavigationPage.TitleView BackgroundColor="{x:StaticResource PanelBackgroundColor}">
+        <Button BackgroundColor="Transparent"
+                    x:Name="EditButton"
+                    Clicked="EditButton_Clicked"
+                    Text="Edit"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    CornerRadius="100"
+                    HorizontalOptions="End"
+                    TextColor="{x:StaticResource ThemeColor}"/>
+    </NavigationPage.TitleView>
+    
+    <StackLayout>
+        <Frame Padding="40" BackgroundColor="{x:StaticResource ThemeColor}">
+            <Label x:Name="ExpenseNameLabel" HorizontalOptions="Center" FontSize="32"></Label>
+        </Frame>
+
+        <Frame Style="{x:StaticResource DetailsFullFrame}">
+            <Label x:Name="ExpenseCostLabel" FontAttributes="Bold" HorizontalOptions="Center" FontSize="Medium"></Label>
+        </Frame>
+
+        <Frame Style="{x:StaticResource DetailsFullFrame}">
+            <Label x:Name="ExpenseDueDateLabel" HorizontalOptions="Center" FontSize="Medium"></Label>
+        </Frame>
+
+        <Frame Style="{x:StaticResource DetailsFullFrame}">
+            <Label x:Name="ExpensePaymentsLabel" HorizontalOptions="Center" FontSize="Medium"></Label>
+        </Frame>
+
+        <Frame Style="{x:StaticResource DetailsFullFrame}">
+            <Label x:Name="ExpenseTotalLabel" HorizontalOptions="Center" FontSize="Medium"></Label>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>

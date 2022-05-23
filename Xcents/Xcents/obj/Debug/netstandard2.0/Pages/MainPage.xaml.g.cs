@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Xcents.MainPage.xaml", "MainPage.xaml", typeof(global::Xcents.MainPage))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("Xcents.Pages.MainPage.xaml", "Pages/MainPage.xaml", typeof(global::Xcents.MainPage))]
 
 namespace Xcents {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("MainPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Pages\\MainPage.xaml")]
     public partial class MainPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.Grid HeaderGrid;
+        private global::Xamarin.Forms.Button SettingsButton;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Grid ExpensesGrid;
@@ -26,11 +26,15 @@ namespace Xcents {
         private global::Xamarin.Forms.Grid FooterGrid;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Button AddExpenseButton;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(MainPage));
-            HeaderGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "HeaderGrid");
+            SettingsButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "SettingsButton");
             ExpensesGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "ExpensesGrid");
             FooterGrid = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Grid>(this, "FooterGrid");
+            AddExpenseButton = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Button>(this, "AddExpenseButton");
         }
     }
 }

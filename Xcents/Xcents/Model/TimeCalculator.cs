@@ -48,5 +48,19 @@ namespace Xcents.Model
             }
             return paymentDate;
         }
+
+        //get laps passed to far
+        public int GetPassedLaps()
+        {
+            int passedLaps = 0;
+            DateTime paymentDate = startDate;
+            while (paymentDate < DateTime.Now)
+            {
+                TimeCalculator tm = new TimeCalculator(paymentDate, timePeriod, multiplier);
+                paymentDate = tm.GetNext();
+                passedLaps++;
+            }
+            return passedLaps;
+        }
     }
 }

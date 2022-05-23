@@ -6,15 +6,25 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xcents.Model;
+using Xcents.Pages;
 
 namespace Xcents
 {
     public partial class MainPage : ContentPage
     {
         private ExpenseManager expenseManager = new ExpenseManager();
+
+        //on generate page
         public MainPage()
         {
             InitializeComponent();
+            PopulateRows(expenseManager.GetExpenses.OrderBy(e => e.DueDaysRemaining()).ToList());
+        }
+
+        //on revisit page
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             PopulateRows(expenseManager.GetExpenses.OrderBy(e => e.DueDaysRemaining()).ToList());
         }
 
@@ -27,9 +37,11 @@ namespace Xcents
                 daysRemaining = daysRemaining.Remove(daysRemaining.Length-1);
             if (expense.DueDaysRemaining() == 0)
                 daysRemaining = "today";
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.Start, Text = expense.Name }, 0, row);
+            Button expenseNameButton = new Button { Margin = 2, FontSize = 16, HorizontalOptions = LayoutOptions.Start, Text = expense.Name };
+            expenseNameButton.Clicked += (s, e) => EditExpenseButton_Clicked(expense);
+            ExpensesGrid.Children.Add(expenseNameButton, 0, row);
             ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"{daysRemaining}" }, 1, row);
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"€{expense.Cost}" }, 2, row);
+            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"- €{expense.Cost}" }, 2, row);
         }
 
         //populate all rows
@@ -56,6 +68,27 @@ namespace Xcents
                 AddRow(expenses[i], i+1);
                 total += expenses[i].Cost;
             }
+        }
+
+        //occurs when player clicks on add expense button
+        private async void AddExpenseButton_Clicked(object sender, EventArgs e)
+        {
+            //go to add expenses page
+            await Navigation.PushAsync(new AddExpensePage());
+            expenseManager.CreateNewExpense("Zuyd", 118, DateTime.Now, "Month", 1);
+            PopulateRows(expenseManager.GetExpenses.OrderBy(x => x.DueDaysRemaining()).ToList());
+        }
+
+        //occurs when player clicks on the title of an existing expense
+        private async void EditExpenseButton_Clicked(Expense expense)
+        {
+            await Navigation.PushAsync(new ViewExpensePage(expense));
+        }
+
+        //occurs when player clicks on the settings icon
+        private async void SettingsButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
         }
     }
 }
