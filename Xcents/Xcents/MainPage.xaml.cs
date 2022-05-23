@@ -11,34 +11,45 @@ namespace Xcents
 {
     public partial class MainPage : ContentPage
     {
+        private ExpenseManager expenseManager = new ExpenseManager();
         public MainPage()
         {
             InitializeComponent();
-            List<Expense> expenseList = new List<Expense>();
-            expenseList.Add(new Expense() { Name="Zuyd", StartDateTime=DateTime.Now.AddDays(-12), Cost=110, TimePeriodRepeatMultiplier=1, TimePeriodValue="Month" });
-            expenseList.Add(new Expense() { Name = "Sporten", StartDateTime = DateTime.Now.AddDays(-33), Cost = 33, TimePeriodRepeatMultiplier=1, TimePeriodValue = "Month" });
-            expenseList.Add(new Expense() { Name = "Daily", StartDateTime = DateTime.Now, Cost = 1, TimePeriodRepeatMultiplier = 2, TimePeriodValue = "Day" });
-            PopulateRows(expenseList);
+            PopulateRows(expenseManager.GetExpenses.OrderBy(e => e.DueDaysRemaining()).ToList());
         }
 
         //add row to form
         protected void AddRow(Expense expense, int row=1)
         {
-            string format = "days";
+            //get days remaining until payment
+            string daysRemaining = expense.DueDaysRemaining().ToString() + " days";
             if (expense.DueDaysRemaining() == 1)
-                format = format.Remove(format.Length-1);
+                daysRemaining = daysRemaining.Remove(daysRemaining.Length-1);
+            if (expense.DueDaysRemaining() == 0)
+                daysRemaining = "today";
             ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.Start, Text = expense.Name }, 0, row);
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"{expense.DueDaysRemaining()} {format}" }, 1, row);
+            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"{daysRemaining}" }, 1, row);
             ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"€{expense.Cost}" }, 2, row);
         }
 
+        //populate all rows
         protected void PopulateRows(List<Expense> expenses)
         {
+            //clear rows
             ExpensesGrid.Children.Clear(); 
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 18, HorizontalOptions = LayoutOptions.Start, Text = "Expense", FontAttributes = FontAttributes.Bold }, 0, 0);
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 18, HorizontalOptions = LayoutOptions.End, Text = "Due in", FontAttributes = FontAttributes.Bold }, 1, 0);
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 18, HorizontalOptions = LayoutOptions.End, Text = "Cost", FontAttributes = FontAttributes.Bold }, 2, 0);
+            //set labels
+            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 18, TextColor=(Color)App.Current.Resources["ThemeColor"], HorizontalOptions = LayoutOptions.Start, Text = "Expense", FontAttributes = FontAttributes.Bold }, 0, 0);
+            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 18, TextColor = (Color)App.Current.Resources["ThemeColor"], HorizontalOptions = LayoutOptions.End, Text = "Due in", FontAttributes = FontAttributes.Bold }, 1, 0);
+            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 18, TextColor = (Color)App.Current.Resources["ThemeColor"], HorizontalOptions = LayoutOptions.End, Text = "Cost", FontAttributes = FontAttributes.Bold }, 2, 0);
 
+            //show text if no expenses were found
+            if(expenses.Count == 0)
+            {
+                DisplayAlert("Keep track of expenses!", "Start by adding expenses using the '+' button at the bottom of the screen.", "Confirm");
+                return;
+            }
+
+            //show expenses
             double total = 0;
             for(int i = 0; i < expenses.Count(); i++)
             {

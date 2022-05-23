@@ -6,6 +6,7 @@
         <!-- Colors -->
         <Color x:Key="AppBackgroundColor">#000000</Color>
         <Color x:Key="PanelBackgroundColor">#171717</Color>
+        <Color x:Key="ThemeColor">#357960</Color> <!-- amazon -->
         
         <!-- classes -->
         <Style TargetType="Label"

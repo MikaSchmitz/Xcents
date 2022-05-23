@@ -5,6 +5,23 @@
              x:Class="Xcents.MainPage">
 
     <StackLayout>
+        <!-- header bar -->
+        <Grid x:Name="HeaderGrid" VerticalOptions="Start" HorizontalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <!-- footer contect goes here -->
+            <Button BackgroundColor="Transparent"
+                    Text="settings"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    CornerRadius="100"
+                    VerticalOptions="Center"
+                    TextColor="{x:StaticResource ThemeColor}"/>
+        </Grid>
+        <!-- end header -->
+        
+        <!-- scroll page -->
         <ScrollView BackgroundColor="{x:StaticResource PanelBackgroundColor}">
             <Frame Padding="24" BackgroundColor="Transparent">
                 <Grid x:Name="ExpensesGrid">
@@ -16,10 +33,26 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <!-- Content goes here -->
+                    <!-- expenses go here -->
                 </Grid>
             </Frame>
         </ScrollView>
+        <!-- end scroll page -->
+        
+        <!-- footer bar -->
+        <Grid x:Name="FooterGrid" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+            <!-- footer contect goes here -->
+            <Button BackgroundColor="{x:StaticResource ThemeColor}"
+                    Text="+"
+                    FontSize="50"
+                    CornerRadius="100"
+                    VerticalOptions="Center"
+                    TextColor="#ffffff"/>
+        </Grid>
+        <!-- end footer -->
     </StackLayout>
 
 </ContentPage>

@@ -12,7 +12,7 @@ namespace Xcents.Model
         private List<Expense> expenses { get; set; }
 
         //REFRESH: expenses from database
-        public void LoadExpenses()
+        private void LoadExpenses()
         {
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))
             {
