@@ -31,7 +31,7 @@ namespace Xcents.Model
         }
 
         //INSERT: new expense
-        public void CreateNewExpense(string name, double cost, DateTime startDateTime, string timePeriodValue, int timePeriodRepeatMultiplier)
+        public static void CreateNewExpense(string name, double cost, DateTime startDateTime, string timePeriodValue, int timePeriodRepeatMultiplier)
         {
             Expense expense = new Expense() { Name = name, Cost = cost, StartDateTime = startDateTime, TimePeriodValue = timePeriodValue, TimePeriodRepeatMultiplier = timePeriodRepeatMultiplier, IsEnabled = 1 };
             using (SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation))

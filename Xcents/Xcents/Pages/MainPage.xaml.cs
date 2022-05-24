@@ -37,7 +37,7 @@ namespace Xcents
                 daysRemaining = daysRemaining.Remove(daysRemaining.Length-1);
             if (expense.DueDaysRemaining() == 0)
                 daysRemaining = "today";
-            Button expenseNameButton = new Button { Margin = 2, FontSize = 16, HorizontalOptions = LayoutOptions.Start, Text = expense.Name };
+            Button expenseNameButton = new Button { Margin = 2, FontSize = 12, HorizontalOptions = LayoutOptions.Start, Text = expense.Name };
             expenseNameButton.Clicked += (s, e) => EditExpenseButton_Clicked(expense);
             ExpensesGrid.Children.Add(expenseNameButton, 0, row);
             ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"{daysRemaining}" }, 1, row);
@@ -75,8 +75,6 @@ namespace Xcents
         {
             //go to add expenses page
             await Navigation.PushAsync(new AddExpensePage());
-            expenseManager.CreateNewExpense("Zuyd", 118, DateTime.Now, "Month", 1);
-            PopulateRows(expenseManager.GetExpenses.OrderBy(x => x.DueDaysRemaining()).ToList());
         }
 
         //occurs when player clicks on the title of an existing expense

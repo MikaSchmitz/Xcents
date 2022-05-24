@@ -6,9 +6,75 @@
              BackgroundColor="{x:StaticResource AppBackgroundColor}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!-- expense name -->
+            <StackLayout BackgroundColor="{x:StaticResource PanelBackgroundColor}" Padding="20" Margin="0, 0, 0, 30">
+                <Label Text="What's the name of your expense?" TextColor="{x:StaticResource ThemeColor}" />
+                <Entry x:Name="ExpenseNameEntry" Keyboard="Text" Placeholder="Name..." MaxLength="32" />
+            </StackLayout>
+            
+
+            <!-- Expense start date -->
+            <StackLayout BackgroundColor="{x:StaticResource PanelBackgroundColor}" Padding="20" Margin="0, 0, 0, 30">
+                <Label Text="When does the first payment take place?" TextColor="{x:StaticResource ThemeColor}" />
+                <DatePicker x:Name="ExpenseStartDatePicker" />
+            </StackLayout>
+
+            <!-- when to repeat -->
+            <StackLayout BackgroundColor="{x:StaticResource PanelBackgroundColor}" Padding="20" Margin="0, 0, 0, 30">
+                <Label Text="How often will the expense repeat itself?" TextColor="{x:StaticResource ThemeColor}" />
+                <Grid x:Name="RepeatSelecterGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Repeat every "
+                       Grid.Column="0"
+                       FontSize="Body"/>
+                    <Picker x:Name="RepeatMultiplierPicker"
+                        Grid.Column="1"
+                        FontSize="Body"
+                        HorizontalTextAlignment="Center"
+                        SelectedIndexChanged="RepeatMultiplierPicker_SelectedIndexChanged">
+                        <Picker.Items>
+
+                        </Picker.Items>
+                    </Picker>
+                    <Picker x:Name="TimePeriodPicker"
+                        Grid.Column="2"
+                        FontSize="Body"
+                        HorizontalTextAlignment="Center"
+                        SelectedIndexChanged="TimePeriodPicker_SelectedIndexChanged">
+                        <Picker.Items>
+
+                        </Picker.Items>
+                    </Picker>
+                </Grid>
+            </StackLayout>
+
+            <!-- Expense cost -->
+            <StackLayout BackgroundColor="{x:StaticResource PanelBackgroundColor}" Padding="20" Margin="0, 0, 0, 30">
+                <Label x:Name="ExpenseCostLabel" Text="How much will you pay every?" TextColor="{x:StaticResource ThemeColor}" />
+                <Entry x:Name="ExpenseCostEntry" Placeholder="Cost in EUR..." MaxLength="10" Keyboard="Numeric"/>
+            </StackLayout>
+
+            <!-- footer bar -->
+            <Grid x:Name="FooterGrid" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- submit button -->
+                <Button x:Name="SubmitExpenseButton"
+                    Clicked="SubmitExpenseButton_Clicked"
+                    BackgroundColor="{x:StaticResource ThemeColor}"
+                    Text="Create expense"
+                    FontSize="20"
+                    CornerRadius="5"
+                    VerticalOptions="Center"
+                    TextColor="#ffffff"/>
+            </Grid>
+            <!-- end footer -->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
