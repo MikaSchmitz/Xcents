@@ -35,6 +35,25 @@
         </ScrollView>
         <!-- end scroll page -->
         
+        <!-- total expenses page -->
+        <StackLayout BackgroundColor="{x:StaticResource PanelBackgroundColor}">
+            <Frame Padding="24" BackgroundColor="Transparent">
+                <Grid x:Name="TotalCostsGird" HorizontalOptions="EndAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Label Text="Expenses this week: " TextColor="{x:StaticResource ThemeColor}" FontAttributes="Bold" Grid.Column="0" FontSize="20"/>
+                    <Label x:Name="TotalExpensesLabel" Text="€50" Grid.Column="1" FontSize="20"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+        <!-- end total expenses page -->
+        
+        
         <!-- footer bar -->
         <Grid x:Name="FooterGrid" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>

@@ -61,16 +61,27 @@ namespace Xcents.Pages
             UpdateCostLabel();
         }
 
+        //cost entry text changed
+        private void ExpenseCostEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string costInput = ExpenseCostEntry.Text;
+            if (!costInput.Contains("€"))
+                costInput = "€" + costInput;
+            ExpenseCostEntry.Text = costInput;
+        }
+
         //clicked submit
         private async void SubmitExpenseButton_Clicked(object sender, EventArgs e)
         {
+
+            double cost = 0;
             //check for wrong or empty inputs
             Queue<string> errors = new Queue<string>();
             if (string.IsNullOrEmpty(ExpenseNameEntry.Text))
                 errors.Enqueue("Please give your expense a name");
             if (string.IsNullOrEmpty(ExpenseCostEntry.Text))
                 errors.Enqueue("Make sure you've added a cost to your expense");
-            if (!double.TryParse(ExpenseCostEntry.Text, out _))
+            if (!double.TryParse(ExpenseCostEntry.Text.Remove(0, 1), out cost))
                 errors.Enqueue("you've entered an invalid cost");
 
             //show errors if mistakes were found
@@ -81,7 +92,7 @@ namespace Xcents.Pages
             }
 
             //create expense
-            ExpenseManager.CreateNewExpense(ExpenseNameEntry.Text, double.Parse(ExpenseCostEntry.Text), ExpenseStartDatePicker.Date, TimePeriodPicker.SelectedItem.ToString(), int.Parse(RepeatMultiplierPicker.SelectedItem.ToString()));
+            ExpenseManager.CreateNewExpense(ExpenseNameEntry.Text, cost, ExpenseStartDatePicker.Date, TimePeriodPicker.SelectedItem.ToString(), int.Parse(RepeatMultiplierPicker.SelectedItem.ToString()));
             await Navigation.PopToRootAsync();
         }
     }

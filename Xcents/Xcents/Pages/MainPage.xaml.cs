@@ -18,14 +18,15 @@ namespace Xcents
         public MainPage()
         {
             InitializeComponent();
-            PopulateRows(expenseManager.GetExpenses.OrderBy(e => e.DueDaysRemaining()).ToList());
+            PopulateRows(expenseManager.GetExpenses.ToList());
         }
 
         //on revisit page
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            PopulateRows(expenseManager.GetExpenses.OrderBy(e => e.DueDaysRemaining()).ToList());
+            PopulateRows(expenseManager.GetExpenses.ToList());
+            TotalExpensesLabel.Text = "€" + expenseManager.CostsThisWeek();
         }
 
         //add row to form
@@ -41,7 +42,7 @@ namespace Xcents
             expenseNameButton.Clicked += (s, e) => EditExpenseButton_Clicked(expense);
             ExpensesGrid.Children.Add(expenseNameButton, 0, row);
             ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"{daysRemaining}" }, 1, row);
-            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"- €{expense.Cost}" }, 2, row);
+            ExpensesGrid.Children.Add(new Label { Margin = 2, FontSize = 17, HorizontalOptions = LayoutOptions.End, Text = $"€{expense.Cost}" }, 2, row);
         }
 
         //populate all rows

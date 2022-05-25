@@ -56,7 +56,7 @@
             <!-- Expense cost -->
             <StackLayout BackgroundColor="{x:StaticResource PanelBackgroundColor}" Padding="20" Margin="0, 0, 0, 30">
                 <Label x:Name="ExpenseCostLabel" Text="How much will you pay every?" TextColor="{x:StaticResource ThemeColor}" />
-                <Entry x:Name="ExpenseCostEntry" Placeholder="Cost in EUR..." MaxLength="10" Keyboard="Numeric"/>
+                <Entry x:Name="ExpenseCostEntry" TextChanged="ExpenseCostEntry_TextChanged" Placeholder="€..." MaxLength="10" Keyboard="Numeric"/>
             </StackLayout>
 
             <!-- footer bar -->
