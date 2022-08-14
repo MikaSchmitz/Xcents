@@ -6,7 +6,7 @@
              BackgroundColor="{x:StaticResource AppBackgroundColor}">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="Er zijn nog geen instellingen beschikbaar."
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>

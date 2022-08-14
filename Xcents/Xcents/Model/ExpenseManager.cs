@@ -120,14 +120,67 @@ namespace Xcents.Model
 
 
         #region METHODS
-        public double CostsThisMonth()
+
+        // get expenses in a year
+        public double ExpensesThisYear()
         {
-            return GetExpensesThisMonth.Sum(x => x.Cost);
+            double totalExpenses = 0;
+            foreach(Expense expense in GetExpensesThisYear)
+            {
+                if (expense.TimePeriodValue == "Year")
+                    totalExpenses += expense.Cost;
+
+                if (expense.TimePeriodValue == "Month")
+                    totalExpenses += expense.Cost * (12 / expense.TimePeriodRepeatMultiplier);
+
+                if (expense.TimePeriodValue == "Week")
+                    totalExpenses += expense.Cost * (52 / expense.TimePeriodRepeatMultiplier);
+
+                if (expense.TimePeriodValue == "Day")
+                    totalExpenses += expense.Cost * (356 / expense.TimePeriodRepeatMultiplier);
+            }
+
+            return totalExpenses;
         }
 
-        public double CostsThisWeek()
+        // get expenses in a month
+        public double ExpensesThisMonth()
         {
-            return GetExpensesThisWeek.Sum(x => x.Cost);
+            double totalExpenses = 0;
+            foreach (Expense expense in GetExpensesThisMonth)
+            {
+                if (expense.TimePeriodValue == "Month")
+                    totalExpenses += expense.Cost;
+
+                if (expense.TimePeriodValue == "Week")
+                    totalExpenses += expense.Cost * (4 / expense.TimePeriodRepeatMultiplier);
+
+                if (expense.TimePeriodValue == "Day")
+                    totalExpenses += expense.Cost * (DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) / expense.TimePeriodRepeatMultiplier);
+            }
+
+            return totalExpenses;
+        }
+
+        // get expenses in a week
+        public double ExpensesThisWeek()
+        {
+            double totalExpenses = 0;
+            foreach (Expense expense in GetExpensesThisWeek)
+            {
+                if (expense.TimePeriodValue == "Week")
+                    totalExpenses += expense.Cost;
+
+                if (expense.TimePeriodValue == "Day")
+                    totalExpenses += expense.Cost * (7 / expense.TimePeriodRepeatMultiplier);
+            }
+
+            return totalExpenses;
+        }
+
+        public double ExpensesToday()
+        {
+            return GetExpensesThisDay.Sum(x => x.Cost);
         }
         #endregion METHODS
     }

@@ -46,8 +46,17 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    <Label Text="Expenses this week: " TextColor="{x:StaticResource ThemeColor}" FontAttributes="Bold" Grid.Column="0" FontSize="20"/>
-                    <Label x:Name="TotalExpensesLabel" Text="€50" Grid.Column="1" FontSize="20"/>
+                    <Label Text="This year: " TextColor="{x:StaticResource ThemeColor}" FontAttributes="Bold" Grid.Column="0" FontSize="20"/>
+                    <Label x:Name="TotalExpensesThisYearLabel" Text="loading.." Grid.Column="1" FontSize="20"/>
+
+                    <Label Text="This month: " TextColor="{x:StaticResource ThemeColor}" FontAttributes="Bold" Grid.Column="0" Grid.Row="1" FontSize="20"/>
+                    <Label x:Name="TotalExpensesThisMonthLabel" Text="loading.." Grid.Column="1" Grid.Row="1" FontSize="20"/>
+
+                    <Label Text="This week: " TextColor="{x:StaticResource ThemeColor}" FontAttributes="Bold" Grid.Column="0" Grid.Row="2" FontSize="20"/>
+                    <Label x:Name="TotalExpensesThisWeekLabel" Text="loading.." Grid.Column="1" Grid.Row="2" FontSize="20"/>
+
+                    <Label Text="Today: " TextColor="{x:StaticResource ThemeColor}" FontAttributes="Bold" Grid.Column="0" Grid.Row="3" FontSize="20"/>
+                    <Label x:Name="TotalExpensesTodayLabel" TextColor="{x:StaticResource ThemeColor}" Text="loading.." Grid.Column="1" Grid.Row="3" FontSize="20"/>
                 </Grid>
             </Frame>
         </StackLayout>

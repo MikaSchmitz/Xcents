@@ -26,7 +26,10 @@ namespace Xcents
         {
             base.OnAppearing();
             PopulateRows(expenseManager.GetExpenses.ToList());
-            TotalExpensesLabel.Text = "€" + expenseManager.CostsThisWeek();
+            TotalExpensesThisYearLabel.Text = "€" + expenseManager.ExpensesThisYear();
+            TotalExpensesThisMonthLabel.Text = "€" + expenseManager.ExpensesThisMonth();
+            TotalExpensesThisWeekLabel.Text = "€" + expenseManager.ExpensesThisWeek();
+            TotalExpensesTodayLabel.Text = "€" + expenseManager.ExpensesToday();
         }
 
         //add row to form
